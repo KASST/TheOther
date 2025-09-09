@@ -1,8 +1,15 @@
-import keyword
+import time
+from my_lib.decorators import timer, logger
 
-# 打印出当前 Python 版本所有的关键字
-print(keyword.kwlist)
+@logger
+@timer
+def add(a, b):
+    """一个简单的加法函数，并模拟耗时"""
+    print("--- 开始执行 add 函数核心逻辑 ---")
+    time.sleep(1) # 模拟一些计算
+    result = a + b
+    print("--- add 函数核心逻辑执行完毕 ---")
+    return result
 
-# 也可以检查一个字符串是否是关键字
-print(f"'del' 是关键字吗? {keyword.iskeyword('del')}")
-print(f"'hello' 是关键字吗? {keyword.iskeyword('hello')}")
+if __name__ == "__main__":
+    add(4, 5)
